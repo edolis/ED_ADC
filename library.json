@@ -1,0 +1,12 @@
+{
+ "name": "ED_ADC",
+  "version": "1.0.0",
+  "description": "A library to handle ESP ADC",
+  "keywords": ["ADC", "ESP32"],
+  "frameworks": ["espidf"],
+  "platforms": ["espressif32"],
+  "build": {
+    "srcFilter": "+<*>"
+  }
+}
+
