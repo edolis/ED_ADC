@@ -96,7 +96,8 @@ private:
    * @return int the calculated percentile
    */
   int calculatePercWidth(std::vector<int> &data, int8_t percentile = 50);
-  ADCChannel(ADCUnit* unit, adc_channel_t channel, adc_atten_t atten);
+  ADCChannel(ADCUnit *unit, adc_channel_t channel, adc_atten_t atten);
+  ~ADCChannel();
   bool isInitialized() const;
 
   adc_oneshot_unit_handle_t _oneshot_handle;
@@ -114,7 +115,7 @@ public:
   /// @param unit_id
   /// @return a pointer to the initialized unit
   static ADCUnit *create(adc_unit_t unit_id = ADC_UNIT_1);
-
+  ~ADCUnit();
   // Getters for both types of handles
   /**
    * @brief Get the Oneshot Handle for one shot readings of the Analog channel
@@ -126,7 +127,9 @@ public:
    * Analog channel
    * @return adc_continuous_handle_t
    */
-  adc_continuous_handle_t getContinuousHandle(); // Removed const since it calls ensureContinuousInitialized()
+  adc_continuous_handle_t
+  getContinuousHandle(); // Removed const since it calls
+                         // ensureContinuousInitialized()
 
   adc_unit_t getUnitId() const;
 
@@ -143,4 +146,4 @@ private:
   adc_oneshot_unit_handle_t _oneshot_handle;
 };
 
-}
+} // namespace ED_ADC
